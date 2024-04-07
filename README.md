@@ -1,5 +1,5 @@
 # 2048.py
-### A fully AI-written clone of 2048 in Python!
+**A fully AI-written clone of 2048 in Python!**
 
 
 ## Installation
