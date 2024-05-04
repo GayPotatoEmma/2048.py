@@ -210,21 +210,22 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if game_state == "play" and event.type == pygame.KEYDOWN:  # Process input only in "play" state
-            if event.key == pygame.K_UP:
-                moved = move_up(grid)
-            elif event.key == pygame.K_DOWN:
-                moved = move_down(grid)
-            elif event.key == pygame.K_LEFT:
-                moved = move_left(grid)
-            elif event.key == pygame.K_RIGHT:
-                moved = move_right(grid)
+        if game_state == "play" and event.type == pygame.KEYDOWN:
+            if event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT):  # Check if arrow key
+                if event.key == pygame.K_UP:
+                    moved = move_up(grid)
+                elif event.key == pygame.K_DOWN:
+                    moved = move_down(grid)
+                elif event.key == pygame.K_LEFT:
+                    moved = move_left(grid)
+                elif event.key == pygame.K_RIGHT:
+                    moved = move_right(grid)
 
-            if moved:
-                add_random_tile(grid)
+                if moved:
+                    add_random_tile(grid)
 
-            if game_over(grid):
-                game_state = "game_over"
+                if game_over(grid):
+                    game_state = "game_over"
 
     if game_state == "start":
         draw_start_screen()
